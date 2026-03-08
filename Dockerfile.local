@@ -1,0 +1,16 @@
+# Local build Docker image
+# Expects a pre-built 'donetick' binary in the build context
+FROM alpine:latest
+
+RUN apk --no-cache add ca-certificates libc6-compat tzdata su-exec
+
+COPY donetick /donetick
+COPY entrypoint.sh /entrypoint.sh
+
+ENV DT_ENV="selfhosted"
+ENV DT_SQLITE_PATH="/donetick-data/donetick.db"
+
+EXPOSE 2021
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/donetick"]

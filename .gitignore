@@ -1,2 +1,5 @@
 donetick.db
 .vscode/launch.json
+donetick
+frontend/dist/
+donetick-dev.tar
